@@ -12,9 +12,9 @@ public class Recipe<RecipeInstruction> {
 
     private int recipeId;
     private String recipeName;
+    private List<RecipeIngredient> recipeIngredients;
     @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
             fetch = FetchType.EAGER)
-            private List<RecipeIngredient> recipeIngredients;
     RecipeInstruction instruction;
     private List<RecipeCategory> categories;
 

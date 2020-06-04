@@ -2,10 +2,7 @@ package se.lexicon.mark.Receptdatabas.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -21,6 +18,8 @@ public class RecipeIngredient<Recipe> {
     Ingredient ingredient;
     private double amount;
     Measurement measurement;
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+            fetch = FetchType.EAGER)
     Recipe recipe;
 
 
