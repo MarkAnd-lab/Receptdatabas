@@ -1,13 +1,28 @@
 package se.lexicon.mark.Receptdatabas.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Objects;
 
+@Entity
 public class RecipeIngredient<Recipe> {
+    @Id
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
+    @Column(name = "recipeIngredientId", updatable = false, nullable = false)
     private String recipeIngredientId;
     Ingredient ingredient;
     private double amount;
     Measurement measurement;
     Recipe recipe;
+
 
     public RecipeIngredient(Ingredient ingredient, double amount, Measurement measurement, Recipe recipe) {
         this.ingredient = ingredient;
